@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar System Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background with stars only -->
+  <div id="space-background"></div>
+
+  <div class="container">
+    <div class="menu">
+      <h1>Planets</h1>
+      <ul>
+        <li onmouseover="showPlanet('mercury')">Mercury</li>
+        <li onmouseover="showPlanet('venus')">Venus</li>
+        <li onmouseover="showPlanet('earth')">Earth</li>
+        <li onmouseover="showPlanet('mars')">Mars</li>
+        <li onmouseover="showPlanet('jupiter')">Jupiter</li>
+        <li onmouseover="showPlanet('saturn')">Saturn</li>
+        <li onmouseover="showPlanet('uranus')">Uranus</li>
+        <li onmouseover="showPlanet('neptune')">Neptune</li>
+      </ul>
+    </div>
+
+    <div class="display">
+      <img id="planet-image" src="images/earth.png" alt="Planet">
+      <h2 id="planet-name">Earth</h2>
+    </div>
+  </div>
+
+  <script>
+    const planetData = {
+      mercury: { name: "Mercury", image: "images/mercury.png" },
+      venus:   { name: "Venus",   image: "images/venus.png" },
+      earth:   { name: "Earth",   image: "images/earth.png" },
+      mars:    { name: "Mars",    image: "images/mars.png" },
+      jupiter: { name: "Jupiter", image: "images/jupiter.png" },
+      saturn:  { name: "Saturn",  image: "images/saturn.png" },
+      uranus:  { name: "Uranus",  image: "images/uranus.png" },
+      neptune: { name: "Neptune", image: "images/neptune.png" }
+    };
+
+    function showPlanet(planetId) {
+      const planet = planetData[planetId];
+      if (planet) {
+        document.getElementById("planet-image").src = planet.image;
+        document.getElementById("planet-name").innerText = planet.name;
+      }
+    }
+
+    // Add static stars
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
+      document.getElementById("space-background").appendChild(star);
+    }
+  </script>
+</body>
+</html>
